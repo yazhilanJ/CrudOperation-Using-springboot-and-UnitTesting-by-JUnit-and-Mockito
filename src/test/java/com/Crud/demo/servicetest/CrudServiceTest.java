@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -71,7 +70,7 @@ class CrudServiceTest {
 		Mockito.when(employeedao.findAll()).thenReturn(List.of(employee,employee1));
 		List<Employee> getallemployee=employeeservice.getEmployee();
 		assertThat(getallemployee).isNotNull();
-//		System.out.println(getallemployee);
+
 		assertThat(getallemployee.size()).isEqualTo(2);
 		
 	}
@@ -87,8 +86,6 @@ class CrudServiceTest {
 		System.out.println("service"+employeeservice);
 		try {
 		Employee updatedemployee=employeeservice.updateEmployee(employee);
-		System.out.println("after"+updatedemployee);
-		System.out.println("get email from upemp  :"+updatedemployee.getEmail());
 		assertThat(updatedemployee.getEmail()).isEqualTo("yaz@gmail.com");
 		assertThat(updatedemployee.getName()).isEqualTo("yazh");
 		}
@@ -103,7 +100,7 @@ class CrudServiceTest {
 	public void deleteEmployee_Test()throws Exception{
 		doNothing().when(employeedao).deleteById(employee.getEmpid());
 		employeeservice.deleteEmployee(employee.getEmpid());
-		System.out.println(employee.getEmpid());
+		
 		verify(employeedao,times(1)).deleteById(employee.getEmpid());
 		assertThat(employee.getEmpid()).isEqualTo(1);
 
