@@ -63,7 +63,7 @@ class CrudServiceTest {
                 .empid(2)
                 .name("yazh")
                 .address("TN")
-                .phno(9751514553L)
+                .phno(1234567890L)
                 .email("yazh@gmail.com")
                
                 .build();
